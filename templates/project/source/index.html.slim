@@ -3,93 +3,94 @@
 | <!--[if IE 8]>  <html class="no-js lt-ie9">         <![endif]-->
 | <!--[if gt IE 8]> <!-->
 html.no-js lang="zh-TW"
-  | <!--<![endif]-->
-  head
-    meta charset="utf-8"
-    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" 
-    title Tiltle
-    meta name="description" content=""
-    meta name="viewport" content="width=device-width, initial-scale=1"
-    = stylesheet_link_tag "screen", :media => "all"
-    / = javascript_include_tag "script"
-    css:
-      .mq-debug {
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        z-index: 10000;
-        padding: 6px;
-        border-radius: 3px;
-        background-color: rgba(0,0,0,.9);
-        font-weight: 700;
-        font-size: 11px;
-        color: rgb(255,255,255);
-      }
-  body
-    #switcher.option-panel
+	| <!--<![endif]-->
+	head
+		meta charset="utf-8"
+		meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" 
+		title Tiltle
+		meta name="description" content=""
+		meta name="viewport" content="width=device-width, initial-scale=1"
+		= stylesheet_link_tag "screen", :media => "all"
+		/ = javascript_include_tag "script"
+		css:
+			.mq-debug {
+				position: absolute;
+				top: 4px;
+				left: 4px;
+				z-index: 10000;
+				padding: 6px;
+				border-radius: 3px;
+				background-color: rgba(0,0,0,.9);
+				font-weight: 700;
+				font-size: 11px;
+				color: rgb(255,255,255);
+			}
+	body
+		#switcher.option-panel
 
-      .panel--logo
-        a href="javascript:;" LOGO
-          / img data-retina="" src="../images/logo-option.png"
-      
-      .panel--list-project
-        .list-project--title
-          | Project Title
-          i.fa.fa-angle-down
-        ul#project-list.list-project--items
-          li
-            a href="javascript:;"
-              span Items
-              span V0
-            .list-progect--example
-              img alt="" data-retina="" src="../images/example.jpg"
-      
-      .option--resize
-        i.fa.fa-desktop data-break="100%" 
-        i.fa.fa-tablet.fa-horizontal data-break="1155px" 
-        i.fa.fa-tablet data-break="788px" 
-        i.fa.fa-mobile.fa-horizontal data-break="500px" 
-        i.fa.fa-mobile.fa-current data-break="340px" 
-      
-      a#close-window.option-item.option-close href="javascript:;" 
-        i.fa.fa-times
-      
-      a#purchase-it.option-item.option-bug href="url"
-        .debugger
-        i.fa.fa-bug
-        span Debugger
-    
-    iframe#iframe frameborder="0" height="1277px" src="url" width="340px" 
+			.panel--logo
+				a href="javascript:;"
+					| LOGO
+					/ img data-retina="" src="../images/logo-option.png"
+			
+			.panel--list-project
+				.list-project--title
+					| Project Title
+					i.fa.fa-angle-down
+				ul#project-list.list-project--items
+					li
+						a href="javascript:;"
+							span Items
+							span V0
+						.list-progect--example
+							img alt="" data-retina="" src="../images/example.jpg"
+			
+			.option--resize
+				i.fa.fa-desktop data-break="100%" 
+				i.fa.fa-tablet.fa-horizontal data-break="1155px" 
+				i.fa.fa-tablet data-break="788px" 
+				i.fa.fa-mobile.fa-horizontal data-break="500px" 
+				i.fa.fa-mobile.fa-current data-break="340px" 
+			
+			a#close-window.option-item.option-close href="javascript:;" 
+				i.fa.fa-times
+			
+			a#purchase-it.option-item.option-bug href="url"
+				.debugger
+				i.fa.fa-bug
+				span Debugger
+		
+		iframe#iframe frameborder="0" height="1277px" src="url" width="340px" 
 
-    script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
-    javascript:
-      window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
-    script src="javascripts/jquery.mediaquery.debugger.js"
-    javascript:
-      $(function(){
-        $(".debugger").mqDebug();
-        $(window).resize(function(){
-          $(".debugger").mqDebug();
-        });
-      });
-    javascript:
-      $(function () {
-        var switcherHeight = $("#switcher").height(),
-          $iframe = $('#iframe');
+		script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+		javascript:
+			window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
+		script src="javascripts/jquery.mediaquery.debugger.js"
+		javascript:
+			$(function(){
+				$(".debugger").mqDebug();
+				$(window).resize(function(){
+					$(".debugger").mqDebug();
+				});
+			});
+		javascript:
+			$(function () {
+				var switcherHeight = $("#switcher").height(),
+					$iframe = $('#iframe');
 
-        function iframeHeight() {
-          $iframe.attr("height", $(window).height() + "px");
-        }
+				function iframeHeight() {
+					$iframe.attr("height", $(window).height() + "px");
+				}
 
-        iframeHeight();
-        var screenBtn = $('[data-break]');
-        screenBtn.on('click', function () {
-          var iframewidth = $(this).data('break');
-          screenBtn.removeClass('fa-current');
-          $(this).addClass('fa-current');
-          $iframe.attr("width", iframewidth);
-        });
-        $(window).on('resize', function () {
-          iframeHeight();
-        });
-      })
+				iframeHeight();
+				var screenBtn = $('[data-break]');
+				screenBtn.on('click', function () {
+					var iframewidth = $(this).data('break');
+					screenBtn.removeClass('fa-current');
+					$(this).addClass('fa-current');
+					$iframe.attr("width", iframewidth);
+				});
+				$(window).on('resize', function () {
+					iframeHeight();
+				});
+			})
