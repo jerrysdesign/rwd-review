@@ -1,0 +1,215 @@
+// ---------------------------------------------------------------------------
+// Imports
+@import "compass";
+@import "base";
+@import "vendor/normalize";
+@import "vendor/font-awesome";
+/* -------------------------------------------------------------------------*/
+/* Layout */
+
+.container {
+	@include container;
+	// @include container($total-columns,$breakpoint-tablet7,$breakpoint-tablet10,$breakpoint-desktop);
+	@include susy-grid-background;
+}
+
+.container {
+	@include at-breakpoint($breakpoint-mobile) {
+		@include susy-grid-background;
+		@include container;
+		@include bleed($grid-padding);
+	}
+	@include at-breakpoint($breakpoint-tablet7) {
+		@include susy-grid-background;
+		@include container;
+	}
+	@include at-breakpoint($breakpoint-tablet10) {
+		@include susy-grid-background;
+		@include container;
+	}
+	@include at-breakpoint($breakpoint-desktop) {
+		@include susy-grid-background;
+		@include set-container-width;
+		@include pie-clearfix;
+	}
+}
+
+$c-default: #529c11;
+
+.option-panel {
+	height: 4em;
+	background: $c-default;
+	padding: 0 9px;
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
+	@include at-breakpoint($break-smart-p) {
+		padding: 0 15px;
+	}
+}
+
+.panel--logo {
+	display: inline-block;
+	vertical-align: middle;
+	height: 4em;
+	line-height: 4em;
+	&:hover {
+		opacity: 0.7;
+	}
+	img {
+		@include at-breakpoint($break-smart-p) {
+			width: 40px;
+		}
+	}
+}
+
+.panel--list-project {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	margin-left: 12px;
+	color: white;
+	a {
+		color: white;
+	}
+	@include at-breakpoint($break-smart-p) {
+		margin-left: 12px;
+	}
+	&:hover {
+		.list-project--items {
+			display: block;
+		}
+		.list-project--title {
+		}
+	}
+
+}
+
+.list-project--title {
+	// width: 136px;
+	position: relative;
+	cursor: pointer;
+	text-transform: uppercase;
+	padding: 16px 15px 14px 17px;
+	background: lighten($c-default, 5%);
+	width: 194px;
+	.fa {
+		position: absolute;
+		top: 15px;
+		right: 17px;
+	}
+}
+
+.list-project--items {
+	display: none;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	li {
+		list-style-type: none;
+		position: relative;
+		width: 100%;
+		a {
+			cursor: pointer;
+			text-transform: uppercase;
+			display: block;
+			background: lighten($c-default, 5%);
+			padding: 13px 15px 12px 17px;
+			&:hover {
+				color: white;;
+				.list-progect--example {
+					display: block;
+				}
+			}
+			span+span {
+				font-size: .75em;
+				display: block;
+				float: right;
+				font-style: normal;
+				color:  $c-default;
+				background: white;
+				padding: 2px 6px 3px 4px;
+			}
+		}
+		&:hover {
+			.list-progect--example {
+				display: none;
+				@include at-breakpoint($break-tablet-p) {
+					display: block;
+				}
+			}
+		}
+		.list-progect--example {
+			display:none;
+			position: absolute;
+			top: 0;
+			left: 204px;
+			border: 3px solid lighten($c-default, 5%);
+			box-shadow: 1px 2px 5px #000;
+		}
+	}
+}
+.option--resize {
+	display: none;
+	@include at-breakpoint($break-tablet-l) {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 47px;
+		.fa {
+			font-size: 1.4em;
+			color: white;
+			cursor: pointer;
+			margin-right: .8em;
+			opacity: 0.7;
+			&.fa-horizontal {
+				-moz-transform: rotate(270deg);
+				-ms-transform: rotate(270deg);
+				-webkit-transform: rotate(270deg);
+				-o-transform: rotate(270deg);
+				transform: rotate(270deg);
+			}
+			&.fa-current,
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}
+.option-item {
+	float: right;
+	border-left: 1px solid #fff;
+	height: 4em;
+	padding: 0 23px 0 26px;
+	cursor: pointer;
+	color: white;
+	vertical-align: middle;
+	.fa {
+		font-size: 1.25em;
+		line-height: 4rem;
+	}
+	&:first-child {
+		padding-right: 0;
+	}
+	&:hover {
+		opacity: 0.7;
+	}
+	&.option-close {
+		font-size: 1.5em;
+	}
+	&.option-bug {
+		span {
+			margin: 0 0 0 10px;
+			display: none;
+			@include  at-breakpoint($break-smart-l) {
+				display: inline-block;
+			}
+		}
+	}
+}
+#iframe {
+	display: block;
+	margin: 0 auto;
+	padding-top: 4em;
+}
